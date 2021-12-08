@@ -7,9 +7,9 @@ public class MainApp {
         System.out.println("1.");
         System.out.println(limitAB(10, 10));
         System.out.println("2.");
-        methPosNeg(-10);
+        isPosOfNeg(-10);
         System.out.println("3.");
-        System.out.println(negativeTrue(-10));
+        System.out.println(isNegativeTrue(-10));
         System.out.println("4.");
         nameToOut("Иван");
         System.out.println("5.");
@@ -24,37 +24,36 @@ public class MainApp {
         arrayMinMax();
         System.out.println("10.");
         leapYear(2021);
-
+        System.out.println("11.");
+        int[] array = {1, 1, 1, 2, 1};
+        System.out.println(checkBalance(array));
     }
-
-    //Почти во всех методах вопрос: они могут менять значение параметров? Если нет, то почему бы не сделать их константами?
 
     /*task_1*/
     /*Написать метод, принимающий на вход два целых числа и проверяющий, что их сумма лежит
     в пределах от 10 до 20 (включительно), если да – вернуть true, в противном случае – false.*/
     public static boolean limitAB(int a, int b) {
-        //2 раза вычисляется (a + b). Зачем? Лучше 1 раз вычислить константу sum = a + b и затем ее использовать
-        return (a + b >= 10 && a + b <= 20);
+        int sum = a + b;
+        return (sum >= 10 && sum <= 20);
     }
 
     /* task_2 */
     /*Написать метод, которому в качестве параметра передается целое число, метод должен
     напечатать в консоль, положительное ли число передали или отрицательное. Замечание: ноль
     считаем положительным числом.*/
-    public static void methPosNeg(int a) {
-        // 1. Код выполняющийся в условиях лучше обрамлять в {...} + переносы строк
-        // 2. Если не выполнилось первое условие - то число отрицательное. Для чего проверка (a < 0)? Что изменятся если ее убрать?
-        // 3. Если прям выебываться написать можно как-то так (пишу в стиле с++, не уверен что на джаве так можно) 
-        //System.out.println((a >= 0)? "Число является положительным" : "Число является отрицательным");
-        if (a >= 0) System.out.println("Число является положительным");
-        else if (a < 0) System.out.println("Число является отрицательным");
+    public static void isPosOfNeg(int a) {
+        System.out.println((a >= 0) ? "Число является положительным" : "Число является отрицательным");
+        /*if (a >= 0) {
+            System.out.println("Число является положительным");
+        }
+        else {
+            System.out.println("Число является отрицательным");
+        }*/
     }
 
     /* task_3 */
-    /*Написать метод, которому в качестве параметра передается целое число. Метод должен
-    вернуть true, если число отрицательное.*/
-    public static boolean negativeTrue(int a) {
-        // в boolean методах 1 слово в названии желательно делать глаголом типа ЯВЛЯЕТСЯ, ИМЕЕТСЯ и т.д. Например isNegative, hasValue ...
+    /*Написать метод, которому в качестве параметра передается целое число. Метод должен вернуть true, если число отрицательное.*/
+    public static boolean isNegativeTrue(int a) {
         return (a < 0);
     }
 
@@ -62,7 +61,6 @@ public class MainApp {
     /*Написать метод, которому в качестве параметра передается строка, обозначающая имя.
     Метод должен вывести в консоль сообщение «Привет, указанное_имя!».*/
     public static void nameToOut(String name) {
-        // Не знаю к чему прикопаться, но прикопаюсь.
         System.out.println("Привет, " + name + "!");
     }
 
@@ -78,8 +76,16 @@ public class MainApp {
             } else {
                 array[i] = 0;
             }
-            //В конце будет лишний пробел. Нужно обработать эту ситуацию
-            System.out.print(array[i]+" ");
+            /*//В конце будет лишний пробел. Нужно обработать эту ситуацию
+            System.out.print(array[i] + " ");*/
+            //Cтарший программист - властелин Джуна. Я обработал, но нужно ли это, если везде в других Tasks такой же лишний пробел?
+            // Стоит ли тратить мощности?
+            if (i < array.length - 1) {
+                System.out.print(array[i] + " ");
+            }
+            else {
+                System.out.print(array[i]);
+            }
         }
         System.out.println("\nМассив через toString: " + Arrays.toString(array));
     }
@@ -89,11 +95,9 @@ public class MainApp {
     С помощью цикла заполнить его значениями 2 5 8 11 14 17 20 23*/
     public static void arrayPlusThree() {
         int[] arrThree = new int[8];
-        //Зачем переменная а? Лишняя трата памяти. Очень расточительно. Из-за подобных выебонов у меня киберпанк не пошел. Не делай так.
-        // arrThree[i] = 2 + i*3;
-        for (int i = 0, a = 2; i < arrThree.length; ++i, a = a + 3) {
-            arrThree[i] = a;
-            System.out.print(arrThree[i]+" ");
+        for (int i = 0; i < arrThree.length; ++i) {
+            arrThree[i] = 2 + i * 3;
+            System.out.print(arrThree[i] + " ");
         }
         System.out.println("");
     }
@@ -102,24 +106,12 @@ public class MainApp {
     /*Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2*/
     public static void arrayMultiplyOnTwo() {
         int[] arrOnTwo = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        /*//так не работает(((
-        for (int elem : arrOnTwo) {
-            if (elem < 6) elem = elem * 2;
-        }*/
-        //магия, которая работает... но есть ли смысл?
-        //смысла нет, последний вариант лучше
-        int i = 0;
-        for (int elem : arrOnTwo) {
-            if (elem < 6) {
+        for (int i = 0; i < arrOnTwo.length; ++i) {
+            if (arrOnTwo[i] < 6) {
                 arrOnTwo[i] *= 2;
             }
             System.out.print(arrOnTwo[i]+" ");
-            ++i;
         }
-        //так работает
-        /*for (int i=0; i<arrOnTwo.length; ++i){
-            if (arrOnTwo[i]<6) arrOnTwo[i] *= 2;
-        }*/
         System.out.println("");
     }
 
@@ -147,13 +139,11 @@ public class MainApp {
         int[] array = {1, 19, 15, -7, 30, 47, 1, 46, -6, 10};
         int minElem = array[0], maxElem = array[0];
         for (int i = 0; i < array.length; ++i) {
-            System.out.print(array[i]+" ");
-            if (array[i]<minElem) {
-            minElem = array[i];
-            }
-            //Тут лучше не проверять второе условие. Если элемент меньше минимального он никак не будет больше максимального. Т.е. лучше сделать else if
-            if (array[i]>maxElem) {
-            maxElem = array[i];
+            System.out.print(array[i] + " ");
+            if (array[i] < minElem) {
+                minElem = array[i];
+            } else {
+                maxElem = array[i];
             }
         }
         System.out.println("\nМинимальный элемент массива: " + minElem);
@@ -166,15 +156,31 @@ public class MainApp {
     public static void leapYear(int year) {
         if (((year % 4 == 0) & !(year % 100 == 0)) | (year % 400 == 0)) {
             System.out.println(year + " год является високосным");
-        }
-        else {
+        } else {
             System.out.println(year + " год не является високосным");
         }
     }
-    
 
-    //Вместо комментариев
-    //Далее код {...}
-    //Новая строчка
+    /* task_11 */
+    /* *Написать метод, в который передается не пустой одномерный целочисленный массив,
+    метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
+    Примеры:
+    checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
+    checkBalance([1, 1, 1, || 2, 1]) → true,
+    граница показана символами ||, эти символы в массив не входят.*/
 
+    public static boolean checkBalance(int[] array) {
+        boolean Balance = false;
+        for (int i = 1; i < array.length; ++i) {
+            int oneArray[] = Arrays.copyOf(array, i);
+            int twoArray[] = Arrays.copyOfRange(array, i, array.length);
+            int sumOnOneArray = Arrays.stream(oneArray).sum();
+            int sumOnTwoArray = Arrays.stream(twoArray).sum();
+            if (sumOnOneArray == sumOnTwoArray) {
+                Balance = true;
+                break;
+            }
+        }
+        return (Balance);
+    }
 }

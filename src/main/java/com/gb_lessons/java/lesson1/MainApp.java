@@ -183,6 +183,9 @@ public class MainApp {
         }
         return (Balance);
     }
+
+    //ОЧЕНЬ ВАЖНЫЙ ФИКС
+
 }
 
 //1

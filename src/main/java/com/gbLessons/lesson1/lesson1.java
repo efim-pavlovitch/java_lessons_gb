@@ -1,34 +1,8 @@
-package com.gb_lessons.java.lesson1;
+package com.gbLessons.lesson1;
 
 import java.util.Arrays;
 
-public class MainApp {
-    public static void main(String[] args) {
-        System.out.println("1.");
-        System.out.println(limitAB(10, 10));
-        System.out.println("2.");
-        isPosOfNeg(-10);
-        System.out.println("3.");
-        System.out.println(isNegativeTrue(-10));
-        System.out.println("4.");
-        nameToOut("Иван");
-        System.out.println("5.");
-        arrayZeroOne();
-        System.out.println("6.");
-        arrayPlusThree();
-        System.out.println("7.");
-        arrayMultiplyOnTwo();
-        System.out.println("8.");
-        arrayDiagonal();
-        System.out.println("9.");
-        arrayMinMax();
-        System.out.println("10.");
-        leapYear(2021);
-        System.out.println("11.");
-        int[] array = {1, 1, 1, 2, 1};
-        System.out.println(checkBalance(array));
-    }
-
+public class lesson1 {
     /*task_1*/
     /*Написать метод, принимающий на вход два целых числа и проверяющий, что их сумма лежит
     в пределах от 10 до 20 (включительно), если да – вернуть true, в противном случае – false.*/
@@ -82,8 +56,7 @@ public class MainApp {
             // Стоит ли тратить мощности?
             if (i < array.length - 1) {
                 System.out.print(array[i] + " ");
-            }
-            else {
+            } else {
                 System.out.print(array[i]);
             }
         }
@@ -99,7 +72,7 @@ public class MainApp {
             arrThree[i] = 2 + i * 3;
             System.out.print(arrThree[i] + " ");
         }
-        System.out.println("");
+        System.out.println();
     }
 
     /* task_7 */
@@ -110,7 +83,7 @@ public class MainApp {
             if (arrOnTwo[i] < 6) {
                 arrOnTwo[i] *= 2;
             }
-            System.out.print(arrOnTwo[i]+" ");
+            System.out.print(arrOnTwo[i] + " ");
         }
         System.out.println("");
     }
@@ -136,13 +109,13 @@ public class MainApp {
     /* task_9 */
     /* *Задать одномерный массив и найти в нем минимальный и максимальный элементы*/
     public static void arrayMinMax() {
-        int[] array = {1, 19, 15, -7, 30, 47, 1, 46, -6, 10};
+        int[] array = {10, 19, 15, -7, 30, 47, 1, 46, -6, 10};
         int minElem = array[0], maxElem = array[0];
         for (int i = 0; i < array.length; ++i) {
             System.out.print(array[i] + " ");
             if (array[i] < minElem) {
                 minElem = array[i];
-            } else {
+            } else if (array[i] > maxElem) {
                 maxElem = array[i];
             }
         }
@@ -170,17 +143,25 @@ public class MainApp {
     граница показана символами ||, эти символы в массив не входят.*/
 
     public static boolean checkBalance(int[] array) {
-        boolean Balance = false;
-        for (int i = 1; i < array.length; ++i) {
-            int oneArray[] = Arrays.copyOf(array, i);
-            int twoArray[] = Arrays.copyOfRange(array, i, array.length);
-            int sumOnOneArray = Arrays.stream(oneArray).sum();
-            int sumOnTwoArray = Arrays.stream(twoArray).sum();
-            if (sumOnOneArray == sumOnTwoArray) {
-                Balance = true;
-                break;
+        int sumToRight = 0, sumToLeft = 0, i = 0, j = array.length - 1;
+        boolean goToRight = true;
+        while (i <= j) {
+            if (goToRight) {
+                sumToRight += array[i];
+                i++;
+                if (sumToRight > sumToLeft) {
+                    goToRight = false;
+                }
+            }
+            else {
+                sumToLeft += array[j];
+                j--;
+                if (sumToLeft > sumToRight) {
+                    goToRight = true;
+                }
             }
         }
-        return (Balance);
+        boolean Balance = (sumToRight == sumToLeft);
+        return Balance;
     }
 }

@@ -3,7 +3,11 @@
 
 int fun1()
 {
-    constexpr int val = 999;
+    int i = 10;
+    if (i != 9)
+    {
+        return i;
+    }
     return val;
 }
 
@@ -15,4 +19,9 @@ float fun3()
 int fun2()
 {
     return 15;
+}
+
+void fun4()
+{
+    do_something();
 }

@@ -5,6 +5,11 @@ int fun1()
     return 10;
 }
 
+float fun3()
+{
+    return 5.f
+}
+
 int fun2()
 {
     return 15;

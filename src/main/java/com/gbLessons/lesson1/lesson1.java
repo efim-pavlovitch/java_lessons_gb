@@ -164,4 +164,10 @@ public class lesson1 {
         boolean Balance = (sumToRight == sumToLeft);
         return Balance;
     }
+
+    //ОЧЕНЬ ВАЖНЫЙ ФИКС
+
 }
+
+//1
+//2

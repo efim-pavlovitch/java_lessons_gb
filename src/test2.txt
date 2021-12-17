@@ -1,8 +1,10 @@
 Файл текст 2 - исходное состояние
 
+constexpr int val = 999;
+
 int fun1()
 {
-    return 10;
+    return val;
 }
 
 float fun3()

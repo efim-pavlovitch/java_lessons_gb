@@ -164,9 +164,15 @@ public class lesson1 {
         boolean Balance = (sumToRight == sumToLeft);
         return Balance;
     }
+<<<<<<< HEAD:src/main/java/com/gbLessons/lesson1/lesson1.java
 
     //ОЧЕНЬ ВАЖНЫЙ ФИКС
 
+=======
+    
+    //не важные изменения
+    //ОЧЕНЬ ВАЖНЫЙ ФИКС
+>>>>>>> a57baa75bf9bb8b121e7961ac60b7da9036cbf4e:src/main/java/com/gb_lessons/java/lesson1/MainApp.java
 }
 
 //1

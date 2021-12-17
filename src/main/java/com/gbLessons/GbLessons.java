@@ -27,10 +27,8 @@ public class GbLessons {
         System.out.println("10.");
         lesson1.leapYear(2021);
         System.out.println("11.");
-        int[] array = {1, 1, 1, 2, 1};
-        System.out.println(lesson1.checkBalance(array));*/
         int[] array = {0, 0, 0, 1, 1};
-        System.out.println(lesson1.checkBalance(array));
+        System.out.println(lesson1.checkBalance(array));*/
 
         //lesson_2
 

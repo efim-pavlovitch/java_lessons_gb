@@ -1,7 +1,7 @@
 package com.gbLessons;
 
-import com.gbLessons.lesson1.lesson1;
-import com.gbLessons.lesson2.*;
+    import com.gbLessons.lesson1.lesson1;
+    import com.gbLessons.lesson2.*;
 
 public class GbLessons {
     public static void main(String[] args) {

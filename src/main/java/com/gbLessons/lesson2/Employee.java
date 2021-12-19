@@ -12,7 +12,9 @@ public class Employee {
     public Employee(String name, String email, int age, String post) {
         this.name = name;
         this.email = email;
-        this.age = age;
+        if (age > 0) {
+            this.age = age;
+        }
         this.post = post;
     }
 

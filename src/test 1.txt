@@ -1,3 +1,4 @@
 test 1
 line 2 после коммита 
 "before REBASE (add test 1 and test 2)"
+add line №3

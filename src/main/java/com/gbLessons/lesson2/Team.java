@@ -4,8 +4,8 @@ public class Team {
     private String nameTeam;
     private Employee[] membersTeam = new Employee[10];
 
-    public Team(String name) {
-        this.nameTeam = name;
+    public Team(String nameTeam) {
+        this.nameTeam = nameTeam;
     }
 
     public void addMemberTeam(Employee obj) {
@@ -21,7 +21,10 @@ public class Team {
     }
 
     public void printAllMember(){
-
-        this.membersTeam[0].printInfo();
+        int ind = 0;
+        while (membersTeam[ind] != null) {
+            ++ind;
+            this.membersTeam[ind].printInfo();
+        }
     }
 }

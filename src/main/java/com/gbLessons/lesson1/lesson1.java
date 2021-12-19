@@ -144,30 +144,25 @@ public class lesson1 {
 
     public static boolean checkBalance(int[] array) {
         int sumToRight = 0, sumToLeft = 0, i = 0, j = array.length - 1;
-        boolean goToRight = true;
+        boolean moveToRight = true;
         while (i <= j) {
-            if (goToRight) {
+            if (moveToRight) {
                 sumToRight += array[i];
                 i++;
                 if (sumToRight > sumToLeft) {
-                    goToRight = false;
+                    moveToRight = false;
                 }
             }
             else {
                 sumToLeft += array[j];
                 j--;
                 if (sumToLeft > sumToRight) {
-                    goToRight = true;
+                    moveToRight = true;
                 }
             }
         }
         boolean Balance = (sumToRight == sumToLeft);
         return Balance;
     }
-
-    //ОЧЕНЬ ВАЖНЫЙ ФИКС
-
 }
 
-//1
-//2
